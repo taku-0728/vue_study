@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<title>
+    Vue.Stationery store
+</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="item in items" v-bind:key="item.name">
+            <!-- v-onでイベントが発生した時に属性地で指定した式を評価する -->
+            {{ item.name }}の個数: <input type="number" v-model="item.quantity" min="0">
+        </li>
+    </ul>
+    <hr>
+    <div :style="errorMessageStyle">
+        <ul>
+            <!-- 各商品の短歌と購入個数をリスト表示する -->
+            <li v-for="item in items" v-bind:key="item.name">
+                {{ item.name }}: {{ item.price }} x {{ item.quantity }} = {{ item.price * item.quantity | numberWithDelimiter }}円
+            </li>
+        </ul>
+        <p>
+            {{ items[0].name }}: {{ items[0].price }} x {{ items[0].quantity }}
+        </p>
+        <p>
+            小計: {{ totalPrice | numberWithDelimiter }}円
+        </p>
+        <p>
+            合計(税込): {{ totalPriceWithTax | numberWithDelimiter }}円
+        </p>
+        <!-- 属性値に応じて、表示をだし分けする -->
+        <p v-show="!canBuy">
+            {{ 1000 | numberWithDelimiter }}円以上からご購入いただけます
+        </p>
+        <!-- ボタンが押されたら、メソッドを呼び出す -->
+        <button v-bind:disabled="!canBuy" v-on:click="doBuy">購入</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
