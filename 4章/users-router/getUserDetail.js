@@ -12,7 +12,7 @@ var userData = [
 ]
 
 // APIの代わりに疑似的に情報を取得する
-var getUSer = function (userId, callback) {
+var getUser = function (userId, callback) {
     setTimeout(function () {
         var filteredUsers = userData.filter(function (user) {
             return user.id === parseInt(userId, 10)
@@ -44,7 +44,7 @@ var UserDetail = {
     methods: {
         fetchData: function () {
             this.loading = true
-            getUser(this.$route.params.userIdm (function (err, user) {
+            getUser(this.$route.params.userId, (function (err, user) {
                 this.loading = false
                 if (err) {
                     this.error = err.toString()

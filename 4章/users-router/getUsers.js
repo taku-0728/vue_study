@@ -1,16 +1,7 @@
 // APIの代わりに疑似的にJsonを返す関数
-var getUSers = function (callback) {
+var getUsers = function (callback) {
     setTimeout(function() {
-        callback(null, [
-            {
-                id: 1,
-                name: 'Takuya Tejima'
-            },
-            {
-                id: 2,
-                name: 'Yohei Noda'
-            }
-        ])
+        callback(null, userData)
     }, 1000)
 }
 
@@ -39,7 +30,7 @@ var UserList = {
         fetchData: function () {
             this.loading = true
             // 取得したデータの結果をusersに格納する
-            getUSers((function (err, users) {
+            getUsers((function (err, users) {
                 this.loading = false
                 if (err) {
                     this.error = err.toString()

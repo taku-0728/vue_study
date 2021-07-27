@@ -4,8 +4,10 @@ var Auth = {
         setTimeout(function () {
             if (email === 'vue@example.com' && pass === 'vue') {
                 // ログイン成功時はローカルストレージにtokenを保存する
-                localStorage.token = Math.ramdom().toString(36).substring(7)
+                localStorage.token = Math.random().toString(36).substring(7)
                 if (cb) { cb(true) }
+            } else {
+                if (cb) { cb(false) }
             }
         }, 0)
     },

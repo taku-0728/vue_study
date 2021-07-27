@@ -28,7 +28,7 @@
         </div>
         <!-- usersがロードされたら各ユーザーの名前を表示する -->
         <div v-for="user in users" :key="user.id">
-            <h2>{{ user.name }}</h2>
+            <router-link :to="{path: '/users/' + user.id}">{{ user.name }}</router-link>
         </div>
     </div>
 </script>
@@ -90,11 +90,12 @@
 </script>
 
 <!-- 任意のJS実装 -->
+<script src="./auth.js"></script>
+<script src="./getUserDetail.js"></script>
+<script src="./login.js"></script>
 <script src="./getUsers.js"></script>
 <script src="./createUser.js"></script>
-<script src="./getUserDetail.js"></script>
-<script src="./auth.js"></script>
-<script src="./login.js"></script>
+
 <script>
 
     var router = new VueRouter({
@@ -144,6 +145,9 @@
     })
 
     var app = new Vue({
+        data: {
+            Auth: Auth
+        },
         router: router
     }).$mount('#app')
 </script>
