@@ -95,6 +95,7 @@
 <script src="./login.js"></script>
 <script src="./getUsers.js"></script>
 <script src="./createUser.js"></script>
+<script src="./getUserProfile.js"></script>
 
 <script>
 
@@ -128,7 +129,20 @@
             },
             {
                 path: '/users/:userId',
-                component: UserDetail
+                name: 'user',
+                component: User,
+                children: [
+                    {
+                        // /user/:userId/profile がマッチした時にUserProfileコンポーネントはUserコンポーネントの<router-view>内部でレンダリングされます
+                        path: 'profile',
+                        component: UserProfile
+                    },
+                    {
+                        // /user/:userId/posts がマッチした時にUserProfileコンポーネントはUserコンポーネントの<router-view>内部でレンダリングされます
+                        path: 'posts',
+                        component: UserPosts
+                    }
+                ]
             },
             {
                 path: '/login',
