@@ -2,7 +2,7 @@
 <!-- 親がfruits-componentにマウントされたインスタンス -->
 <div id="fruits-component">
     <ol>
-        <!-- v-forで繰り返した書くfruitをprops(fruits-item)に与えている -->
+        <!-- v-forで繰り返した各fruitをprops(fruits-item)に与えている -->
         <fruits-item-name v-for="fruit in fruitsItems" :key="fruit.name" :fruits-item="fruit"></fruits-item-name>
     </ol>
 </div>
